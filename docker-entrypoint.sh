@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -e
 
 VOLUME_HOME="/var/lib/mysql"
 LOG="/var/log/mysql/error.log"
