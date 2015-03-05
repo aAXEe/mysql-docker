@@ -1,0 +1,16 @@
+[Unit]
+Description=MySQL Docker Container
+After=docker.service
+
+[Service]
+Restart=always
+KillMode=control-group
+ExecStartPre=-/usr/bin/docker run --name=mysql-data -v /var/lib/mysql \
+    raumzeitlabor/mysql-docker echo "data-only container for MySQL"
+ExecStart=/usr/bin/docker run --name=mysql --detach=false --cpu-shares=512 \
+    --memory=512M --rm=true --volumes-from=mysql-data \
+    raumzeitlabor/mysql-docker
+ExecStop=/usr/bin/docker pull raumzeitlabor/mysql-docker:latest
+
+[Install]
+WantedBy=multi-user.target
