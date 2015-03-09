@@ -1,6 +1,7 @@
 [Unit]
 Description=MySQL Docker Container
 After=docker.service
+Requires=docker.service
 
 [Service]
 Restart=always
