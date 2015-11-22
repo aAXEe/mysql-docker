@@ -6,8 +6,6 @@ Requires=docker.service
 [Service]
 Restart=always
 KillMode=control-group
-ExecStartPre=-/usr/bin/docker run --name=mysql-data -v /var/lib/mysql \
-    openseamap/mysql-docker echo "data-only container for MySQL"
 ExecStart=/usr/bin/docker run --name=mysql --detach=false --cpu-shares=512 \
     --memory=512M --rm=true --volumes-from=mysql-data --hostname=mysql \
     --cap-drop=NET_RAW \
