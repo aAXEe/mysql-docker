@@ -9,7 +9,7 @@ KillMode=control-group
 ExecStart=/usr/bin/docker run --name=mysql --detach=false --cpu-shares=512 \
     --memory=512M --rm=true --volumes-from=mysql-data --hostname=mysql \
     --cap-drop=NET_RAW \
-    openseamap/mysql-docker
+    openseamap/mysql-docker:master
 ExecStop=/usr/bin/docker pull openseamap/mysql-docker:master
 
 [Install]
