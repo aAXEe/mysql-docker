@@ -6,6 +6,7 @@ Requires=docker.service
 [Service]
 Restart=always
 KillMode=control-group
+ExecStartPre=-/usr/bin/docker rm mysql
 ExecStart=/usr/bin/docker run --name=mysql --detach=false --cpu-shares=512 \
     --memory=512M --rm=true --volumes-from=mysql-data --hostname=mysql \
     --cap-drop=NET_RAW \
